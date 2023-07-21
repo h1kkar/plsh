@@ -1,19 +1,9 @@
 [package]
 name = "plsh"
 description = "little shell for you"
-authors = ["Dmitrij Sinicin"]
+authors = ["Dmitrij Sinicin <h1kk4r@yandex.ru>"]
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 dirs = "5.0.0"
-
-[lib]
-name = "plsh"
-path = "core/src/lib.rs"
-
-[[bin]]
-name = "plsh"
-path = "src/plsh.rs"
