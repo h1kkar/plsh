@@ -1,6 +1,6 @@
-mod plsh;
+mod shime;
 
-use plsh::start;
+use shime::start;
 
 fn main() {
     start()
