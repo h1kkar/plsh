@@ -2,9 +2,9 @@
 - [x] redesign code (i will again recycle the structure again) - completed july 21, 2023
 - [x] choose a new name (еhe old name is `plsh`, it is really bad dude) - completed july 21, 2023
 - [x] documentation - completed july 21, 2023
+- [x] publication on [crates.io](crates.io)
 
 - [ ] organization of work with absolute path for the `cd` command
-- [ ] publication on [crates.io](crates.io)
 
 - [ ] ru version of `readme.md`
 
