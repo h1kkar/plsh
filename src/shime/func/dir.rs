@@ -41,12 +41,16 @@ pub fn home_dir() -> String {
 pub fn cd(path: &String) {
     let path_split: Vec<String> = path.split_inclusive('/').map(String::from).collect();
 
-    for i in path_split {
-        match &i[..] {
-            "../" | ".." => {
-                back()
-            },
-            _ => next(&vec![i])
+    if path_split[0].starts_with("/") {
+        absolute_path(&path_split)
+    } else {
+        for i in path_split {
+            match &i[..] {
+                "../" | ".." => {
+                    back()
+                },
+                _ => next(&vec![i])
+            }
         }
     }
 }
@@ -91,6 +95,14 @@ pub fn next(path: &Vec<String>) {
     let _ = match env::set_current_dir(&dir) {
         Ok(()) => print!(""),
         Err(error) => println!("{0}", error),
+    };
+}
+
+pub fn absolute_path(path: &Vec<String>) {
+    let dir = path.concat();
+    let _ = match env::set_current_dir(&dir) {
+        Ok(()) => print!(""),
+        Err(err) => println!("{0}", err),
     };
 }
 
