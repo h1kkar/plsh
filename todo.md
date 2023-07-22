@@ -1,11 +1,14 @@
-- [x] v0.0.1 - completed jultt 21, 2023
+- [x] v0.0.1 - completed july 21, 2023
 - [x] redesign code (i will again recycle the structure again) - completed july 21, 2023
 - [x] choose a new name (еhe old name is `plsh`, it is really bad dude) - completed july 21, 2023
 - [x] documentation - completed july 21, 2023
-- [x] publication on [crates.io](crates.io)
-- [x] organization of work with absolute path for the `cd` command
+- [x] publication on [crates.io](crates.io) - completed july 22, 2023
+- [x] organization of work with absolute path for the `cd` command - completed july 22, 2023
 
-- [ ] ru version of `readme.md`
+- [ ] cool output - coon
+- [ ] beatiful prompt - soon
+- [ ] ru version of `readme.md` - soon
+- [ ] make a change in the russian keyword in english
 
 - [ ] own func
 - [ ] history
@@ -14,7 +17,5 @@
 - [ ] syntax hightlights
 - [ ] source cmd
 - [ ] open api's
-- [ ] beatiful prompt
-- [ ] cool output
 - [ ] config files
 - [ ] integration with [pls](https://github.com/h1kkar/pls)
