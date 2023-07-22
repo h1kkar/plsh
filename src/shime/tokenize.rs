@@ -1,10 +1,17 @@
+/// structure that contains the command keyword and the arguments.
 pub struct Command {
+    /// A string containing a keyword.
     pub keyword: String,
+    /// Vector containing all the command arguments.
     pub args: Vec<String>,
 }
 
+/// Implementation, which takes away the input and gives the structure
+/// of `Command`.
 impl Command {
-    pub fn tokenize_arg(c: String) -> Command {
+    /// The main function that simply compares the command with `""` and
+    /// performs the necessary actions.
+    pub fn start(c: String) -> Command {
         match &c[..] {
             "" => {
                 Command {
@@ -23,6 +30,25 @@ impl Command {
 
     }
 
+    /// The function that receives the vector searches brackets and
+    /// returns the structure of the Command with already combined
+    /// values depending on the obtained values.
+    ///
+    /// # Example
+    ///
+    /// ```no_run
+    /// let cmd: Vec<String> = vec![String::from("echo"), String::from("\"hi"), String::from("bro\"")];
+    /// search_quotes(cmd);
+    /// ```
+    ///
+    /// This is what happens at the exit:
+    ///
+    /// ```no_run
+    /// Command {
+    ///     keyword: "echo",
+    ///     args: ["hi bro"],
+    /// }
+    /// ```
     fn search_quotes(mut c: Vec<String>) -> Command {
         let mut i = 0;
         let mut has_quote = false;
@@ -70,31 +96,31 @@ mod tokenize_test {
 
     #[test]
     fn empty() {
-        assert_eq!("", Command::tokenize_arg("".to_string()).keyword)
+        assert_eq!("", Command::start("".to_string()).keyword)
     }
 
     #[test]
     fn test_keyword() {
-        assert_eq!("test", Command::tokenize_arg("test".to_string()).keyword)
+        assert_eq!("test", Command::start("test".to_string()).keyword)
     }
 
     #[test]
     fn no_arg() {
-        assert_eq!(0, Command::tokenize_arg("test".to_string()).args.len())
+        assert_eq!(0, Command::start("test".to_string()).args.len())
     }
 
     #[test]
     fn one_arg() {
-        assert_eq!(1, Command::tokenize_arg("test one".to_string()).args.len())
+        assert_eq!(1, Command::start("test one".to_string()).args.len())
     }
 
     #[test]
     fn multi_args() {
-        assert_eq!(3, Command::tokenize_arg("test one two three".to_string()).args.len())
+        assert_eq!(3, Command::start("test one two three".to_string()).args.len())
     }
 
     #[test]
     fn quotes () {
-        assert_eq!(2, Command::tokenize_arg("test \"one two\" three".trim().to_string()).args.len())
+        assert_eq!(2, Command::start("test \"one two\" three".trim().to_string()).args.len())
     }
 }

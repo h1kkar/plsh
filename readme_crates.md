@@ -25,6 +25,3 @@ $ make build
 
 ### documentation
 to receive documentation, contact [docs.rs](https://docs.rs/shime)
-
-### todo
-if you want to see my plans for the future in relation to this project, as well as what I have already done and when, visit [todo.md](https://github.com/h1kkar/shime/blob/main/todo.md)

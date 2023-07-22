@@ -2,6 +2,19 @@ use std::env;
 
 extern crate dirs;
 
+/// A function returning the home directory.
+///
+/// # Usage
+/// 
+/// ```no_run
+/// println!(home_dir());
+/// ```
+/// Here's what will turn out in the end, instead of `user`, there should be the
+/// name of your current user.
+///
+/// ```no_run
+/// "/home/user"
+/// ```
 pub fn home_dir() -> String {
     match dirs::home_dir() {
         Some(path) => {
@@ -13,6 +26,18 @@ pub fn home_dir() -> String {
     }
 }
 
+/// a function responsible for the transition to a particular directory.
+///
+/// Equal to the `cd` function in Unix- systems.
+///
+/// # Usage
+///
+/// ```no_run
+/// // Current directories is "/home/user/"
+/// let path: String = String::from("project/git/shime");
+/// cd(&path);
+/// // Current directories is "/home/user/project/git/shime"
+/// ```
 pub fn cd(path: &String) {
     let path_split: Vec<String> = path.split_inclusive('/').map(String::from).collect();
 
@@ -26,7 +51,16 @@ pub fn cd(path: &String) {
     }
 }
 
-fn back() {
+/// The function that transition to the directory is back (accompanies the [cd function][cd]).
+///
+/// # Usage
+///
+/// ```no_run
+/// // Current directories is "shime/src"
+/// back()
+/// // Current directories is "shime"
+/// ```
+pub fn back() {
     let cur_dir = env::current_dir().unwrap().display().to_string();
 
     let mut dir_split: Vec<String> = cur_dir.split_inclusive('/').map(String::from).collect();
@@ -39,7 +73,17 @@ fn back() {
     };
 }
 
-fn next(path: &Vec<String>) {
+/// The function that transition to a specific directory is lower in the directory tree (accompanies the [cd function][cd]).
+///
+/// # Usage
+///
+/// ```no_run
+/// // Current directories is "shime"
+/// let path: String = String::from("src");
+/// next(&vec![path]);
+/// // Current directories is "shime/src"
+/// ```
+pub fn next(path: &Vec<String>) {
     let cur_dir = env::current_dir().unwrap().display().to_string();
 
     let dir = cur_dir + "/" + &path.concat()[..];
@@ -50,7 +94,15 @@ fn next(path: &Vec<String>) {
     };
 }
 
-pub fn home_open() {
+/// The function that transition to a home directory
+///
+/// # Usage
+///
+/// ```no_run
+/// go_home()
+/// // Current directories is "/home/user"
+/// ```
+pub fn go_home() {
     let _ = match env::set_current_dir(home_dir()) {
         Ok(()) => print!(""),
         Err(error) => println!("{0}", error),

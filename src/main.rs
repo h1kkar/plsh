@@ -1,7 +1,29 @@
-mod shime;
+//! Little shell for you.
+//!
+//! This сrate is a full-fledged shell written on Rust, capable of working along
+//! with `bash`.
+//!
+//! At the moment, it only works in Linux systems.
+//!
+//! #Usage
+//! 
+//! This crate is [on crates.io](https://crates.io/crates/shime).
+//! 
+//! # Examples
+//! 
+//! You really thought that I would write everything that can be launched? 
+//! Of course not. Just run everything that is possible and enjoy.
+//!
+//! If you want to see internal functions, then look better the 
+//! [main module][shime].
 
-use shime::start;
+/// This is the main module that includes the entire functionality of the shell.
+pub mod shime;
 
+#[doc(hidden)]
+pub use shime::start;
+
+#[doc(hidden)]
 fn main() {
     start()
 }

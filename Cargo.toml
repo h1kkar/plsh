@@ -1,7 +1,14 @@
 [package]
-name = "plsh"
-description = "little shell for you"
+name = "shime"
+description = "✨ little shell for you"
 authors = ["Dmitrij Sinicin <h1kk4r@yandex.ru>"]
+readme = "readme_crates.md"
+homepage = "h1kkar.github.io/p/shime"
+repository = "https://github.io/h1kkar/shime.git"
+license = "AGPL-3.0-only"
+keywords = ["shell", "cd", "prompt"]
+categories = ["command-line-utilities"]
+exclude = ["facts.md", "private_todo.md", ".gitignore", "todo.md", "todo", "readme.md"]
 version = "0.1.0"
 edition = "2021"
 
