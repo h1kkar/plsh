@@ -5,9 +5,9 @@
 - [x] publication on [crates.io](crates.io) - completed july 22, 2023
 - [x] organization of work with absolute path for the `cd` command - completed july 22, 2023
 
-- [ ] cool output - coon
-- [ ] beatiful prompt - soon
-- [ ] ru version of `readme.md` - soon
+- [ ] cool output
+- [ ] beatiful prompt
+- [ ] ru version of `readme.md`
 - [ ] make a change in the russian keyword in english
 
 - [ ] own func
