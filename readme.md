@@ -2,15 +2,11 @@
     <h1>shime</h1>
     <h3>✨ <strong>shime this is a little shell for you</strong></h3>
     <a href="https://crates.io/crates/shime"><img alt="crates.io" src="https://img.shields.io/crates/v/shime.svg"></a>
-
-    [![crates.io](https://img.shields.io/crates/v/shime.svg)](https://crates.io/crates/shime)
-    [![docs.rs](https://img.shields.io/docsrs/shime/v0.0.1)](https://docs.rs/shime)
-    [![github commit activity](https://img.shields.io/github/commit-activity/t/h1kkar/shime)](https://github.com/h1kkar/shime/commits/main)
-    [![github commits since latest release](https://img.shields.io/github/commits-since/h1kkar/shime/latest/main)]()
-    ![github top language](https://img.shields.io/github/languages/top/h1kkar/shime)
-    [![license](https://img.shields.io/github/license/h1kkar/shime)](https://github.com/h1kkar/shime/blob/main/LICENSE)
-
-
+    <a href="https://docs.rs/shime"><img alt="docs.rs" src="https://img.shields.io/docsrs/shime/v0.0.1"></a>
+    <a href="https://github.com/h1kkar/shime/commits/main"><img alt="github commit activity" src="https://img.shields.io/github/commit-activity/t/h1kkar/shime"></a>
+    <img alt="github commits since latest release" src="https://img.shields.io/github/commits-since/h1kkar/shime/latest/main">
+    <img alt="github top language" src="https://img.shields.io/github/languages/top/h1kkar/shime">
+    <a href="https://github.com/h1kkar/shime/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/github/license/h1kkar/shime"></a>
 </div>
 
 
