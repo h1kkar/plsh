@@ -1,6 +1,7 @@
 <div align="center">
     <h1>shime</h1>
     <h3>✨ <strong>shime this is a little shell for you</strong></h3>
+    <a href="https://crates.io/crates/shime"><img alt="crates.io" src="https://img.shields.io/crates/v/shime.svg"></a>
 
     [![crates.io](https://img.shields.io/crates/v/shime.svg)](https://crates.io/crates/shime)
     [![docs.rs](https://img.shields.io/docsrs/shime/v0.0.1)](https://docs.rs/shime)
