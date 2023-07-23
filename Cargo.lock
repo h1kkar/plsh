@@ -3,6 +3,12 @@
 version = 3
 
 [[package]]
+name = "ansi-colors"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "093232fe8aaab7c69de6d88bd8abdfad2086d25e5c4cc84a49409955f2cb4f0b"
+
+[[package]]
 name = "bitflags"
 version = "1.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -51,6 +57,12 @@ dependencies = [
  "libc",
  "wasi",
 ]
+
+[[package]]
+name = "git_info"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "641b847f0375f4b2c595438eefc17a9c0fbf47b400cbdd1ad9332bf1e16b779d"
 
 [[package]]
 name = "libc"
@@ -142,8 +154,10 @@ dependencies = [
 name = "shime"
 version = "0.0.1"
 dependencies = [
+ "ansi-colors",
  "colorized",
  "dirs",
+ "git_info",
  "rand",
 ]
 
