@@ -11,7 +11,7 @@
 
 #####
 
-- [ ] cool output
+- [ ] cool output (cd - completed)
 - [ ] beatiful prompt
 - [ ] ru version of `readme.md`
 - [ ] make a change in the russian keyword in english

@@ -6,6 +6,7 @@
     <img alt="github commits since latest release" src="https://img.shields.io/github/commits-since/h1kkar/shime/latest/main">
     <img alt="github top language" src="https://img.shields.io/github/languages/top/h1kkar/shime">
     <a href="https://github.com/h1kkar/shime/blob/main/LICENSE"><img alt="license" src="https://img.shields.io/github/license/h1kkar/shime"></a>
+    <h5>You can receive additional information, as well as learn in advance about new functions in the <a href="https://shime_rust.t.me">telegram channel</a></h5>
 </div>
 
 
