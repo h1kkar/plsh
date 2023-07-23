@@ -1,6 +1,7 @@
 use rand::Rng;
 use colorized::*;
 
+/// A function that prints goodbye in different languages when exiting.
 pub fn say() -> (String, Colors) {
     match n() {
         0 => (String::from("bye bye"), Colors::BlueFg), //eng
