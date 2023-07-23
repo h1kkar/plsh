@@ -29,4 +29,4 @@ $ make build
 *if you do not possess `make`, then just repeat in `MakeFile`, but perform them with caution, I do not bear responsibility in the event of your error*
 
 ### todo
-if you want to see my plans for the future in relation to this project, as well as what I have already done and when, visit [todo.md](https://github.com/h1kkar/shime/blob/main/todo.md)
+if you want to see my plans for the future in relation to this project, as well as what I have already done and when, visit [notion](https://destiny-biology-77d.notion.site/TODO-787cf27fe21c40a589fea46c980a3141?pvs=4)
