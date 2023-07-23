@@ -8,10 +8,10 @@
 
 #### v0.0.2 - next ver
 - [x] organization of work with absolute path for the `cd` command - completed july 22, 2023
+- [x] cool output - completed july 23, 2023
 
 #####
 
-- [ ] cool output (cd - completed)
 - [ ] beatiful prompt
 - [ ] ru version of `readme.md`
 - [ ] make a change in the russian keyword in english

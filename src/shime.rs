@@ -2,11 +2,15 @@
 /// 
 /// This function simply processes prompt, input, withdrawal and manages to which command to launch.
 pub fn start() {
+    use colorized::*;
     use read::*;
     use tokenize::*;
-    use func::dir::{
-        self,
-        cd,
+    use func::{
+        dir::{
+            self,
+            cd,
+        },
+        bye,
     };
     use std::process::Command as Cmds;
 
@@ -20,12 +24,23 @@ pub fn start() {
                 if cmds.args.len() == 1 {
                     cd(&cmds.args[0])
                 } else if cmds.args.len() == 0 {
-                    dir::go_home()
+                    match dir::go_home() {
+                        Ok(_) => println!("you {0} to the {1} dir", "moved".color(Colors::CyanFg), "home".color(Colors::MagentaFg)),
+                        Err(error) => println!("{0}", error),
+                    }
                 } else {
                     println!("many args")
                 }
             },
-            "exit" => break,
+            "clr" => {
+                println!("{} {} {} {} {} {} {} {}", "██".color(Colors::BlackFg), "██".color(Colors::RedFg), "██".color(Colors::GreenFg), "██".color(Colors::YellowFg), "██".color(Colors::BlueFg), "██".color(Colors::MagentaFg), "██".color(Colors::CyanFg), "██".color(Colors::WhiteFg));
+                println!("{} {} {} {} {} {} {} {}", "██".color(Colors::BrightBlackFg), "██".color(Colors::BrightRedFg), "██".color(Colors::BrightGreenFg), "██".color(Colors::BrightYellowFg), "██".color(Colors::BrightBlueFg), "██".color(Colors::BrightMagentaFg), "██".color(Colors::BrightCyanFg), "██".color(Colors::BrightWhiteFg));
+            },
+            "exit" => {
+                let (bye, clr) = bye::say();
+                println!("{0}", bye.color(clr));
+                break;
+            },
             "" => print!(""),
             _ => {
                 match Cmds::new(cmds.keyword)
