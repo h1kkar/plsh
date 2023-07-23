@@ -15,7 +15,7 @@ pub fn start() {
     use std::process::Command as Cmds;
 
     loop {
-        prompt::exec('%');
+        prompt::exec('❯');
         let cmd = read_cmd();
         let cmds = Command::start(cmd);
 
