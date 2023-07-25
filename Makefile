@@ -1,8 +1,10 @@
-all: 
+all: build install
 
 build:
-	@cargo b --release
+	@./res/install.sh b
 
 install:
-	@sudo install target/release/plsh /bin/plsh
-	@echo "/bin/plsh" | sudo tee -a /etc/shells
+	@./res/install.sh i
+
+uninstall:
+	@sudo rm /bin/shime
