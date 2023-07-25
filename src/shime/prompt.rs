@@ -1,12 +1,8 @@
-use std::{
-    io::*,
-    env,
-};
+use dye::clr;
 
-use super::func::dir::home_dir;
+use std::io::*;
 
-use colorized::*;
-use rand::Rng;
+use crate::shime::prompt::sudo::root;
 
 /// A function that simply prints prompt, nothing special.
 ///
@@ -29,36 +25,21 @@ use rand::Rng;
 /// ```
 pub fn exec(c: char) {
     print!("\n");
-    let cur_dir = env::current_dir().unwrap().display().to_string();
-    let home = home_dir() + "/";
-    let d: Vec<String> = cur_dir.split(&home).map(String::from).collect();
-    if cur_dir == home_dir() {
-        println!("{0}", "~".color(Colors::BrightYellowFg))
-    } else {
-        if d.len() == 1 {
-            println!("{0}", d[0].color(Colors::RedFg))
-        } else {
-            println!("{0}", d.concat().color(Colors::BrightCyanFg))
-        }
-    }
 
-    let clr = match n() {
-        0 => Colors::RedFg,
-        1 => Colors::GreenFg,
-        2 => Colors::BrightGreenFg,
-        3 => Colors::BrightYellowFg,
-        4 => Colors::BlueFg,
-        5 => Colors::BrightBlueFg,
-        6 => Colors::MagentaFg,
-        7 => Colors::BrightCyanFg,
-        _ => Colors::GreenFg,
-    };
-
-    print!("{0} ", c.to_string().color(clr));
+    line();
+    print!("{0} ", clr(c));
     stdout().flush().unwrap();    
+    
 }
 
-#[doc(hidden)]
-fn n() -> i8 {
-    rand::thread_rng().gen_range(0..8)
+fn line(/*ch: Vec<String>*/) {
+    root();
+    print!("{0}\n", dir::main())
 }
+
+pub mod dye;
+pub mod dir;
+pub mod git;
+pub mod lang;
+pub mod sudo;
+pub mod time;
