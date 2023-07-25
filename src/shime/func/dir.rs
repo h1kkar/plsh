@@ -4,7 +4,7 @@ use std::{
 };
 
 use dirs;
-use colorized::*;
+use ansi_colors::*;
 
 /// A function returning the home directory.
 ///
@@ -42,12 +42,18 @@ pub fn home_dir() -> String {
 /// cd(&path);
 /// // Current directories is "/home/user/project/git/shime"
 /// ```
-pub fn cd(path: &String) {
+pub fn go(path: &String) {
     let path_split: Vec<String> = path.split_inclusive('/').map(String::from).collect();
 
     if path_split[0].starts_with("/") {
         match absolute_path(&path_split) {
-            Ok(_) => println!("you {0} to the {1} dir", "moved".color(Colors::CyanFg), path.color(Colors::MagentaFg)),
+            Ok(_) => {
+                let mut m = ColouredStr::new("moved");
+                m.cyan();
+                let mut p = ColouredStr::new(path);
+                p.magenta();
+                println!("you {0} to the {1} dir", m, p)
+            },
             Err(error) => println!("{0}", error),
         }
     } else {
@@ -84,12 +90,25 @@ pub fn cd(path: &String) {
         //let s = String::from("~/") + &dir[1][..];
         if cond {
             if cur_dir == home_dir() {
-                println!("you {0} to the {1} dir", "moved".color(Colors::CyanFg), "home".color(Colors::MagentaFg))
+                let mut m = ColouredStr::new("moved");
+                m.cyan();
+                let mut h = ColouredStr::new("home");
+                h.magenta();
+                println!("you {0} to the {1} dir", m, h)
             } else {
                 if dir.len() == 1 {
-                    println!("you {0} to the {1} dir", "moved".color(Colors::CyanFg), dir[0].color(Colors::RedFg))
+                    let mut m = ColouredStr::new("moved");
+                    m.cyan();
+                    let mut r = ColouredStr::new(&dir[0]);
+                    r.red();
+                    println!("you {0} to the {1} dir", m, r)
                 } else{
-                    println!("you {0} to the {1} dir", "moved".color(Colors::CyanFg), dir.concat().color(Colors::MagentaFg))
+                    let mut m = ColouredStr::new("moved");
+                    m.cyan();
+                    let d = &dir.concat()[..];
+                    let mut d = ColouredStr::new(d);
+                    d.magenta();
+                    println!("you {0} to the {1} dir", m, d)
                 }
             }
         }
