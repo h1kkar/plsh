@@ -1,9 +1,9 @@
 use std::env;
 
-//use super::super::func::dir;
-
 use ansi_colors::*;
 
+/// A function responsible for the withdrawal of information about whether
+/// the user has come under `sudo`.
 pub fn root() {
     if var() == "root" {
         let mut r = ColouredStr::new("root");
@@ -13,6 +13,7 @@ pub fn root() {
     }
 }
 
+#[doc(hidden)]
 pub fn var() -> String {
     let key = "user".to_uppercase();
 

@@ -5,21 +5,11 @@ use std::{
 };
 
 use super::super::func::dir::home_dir;
-//use super::git;
 use ansi_colors::*;
-//use git_info;
 
+/// The function responsible for whether the name of the repository
+/// or directory will be displayed.
 pub fn main() -> String {
-    /*let cur_dir = env::current_dir().unwrap().display().to_string();
-    let dir_split: Vec<String> = cur_dir.split_inclusive('/').map(String::from).collect();
-    println!("{0} : {1}", dir_split[&dir_split.len()-1], git::config().branch);
-    if git::config().branch == dir_split[&dir_split.len()-1] {
-        let b = &git::config().branch[..];
-        let mut b = ColouredStr::new(b);
-        b.magenta();
-        b.bold();
-        b.to_string()*/
-
     let g = match Command::new("git")
         .arg("branch")
         .output() {
@@ -33,14 +23,9 @@ pub fn main() -> String {
     } else {
         local()
     }
-
-    /*if info.branches.unwrap_or(vec![]).len() == 0 {
-        local()
-    } else {
-        git::config().branch
-    }*/
 }
 
+/// a function responsible for the type of directory output.
 fn local() -> String {
     let cur_dir = env::current_dir().unwrap().display().to_string();
     let home = home_dir() + "/";
@@ -67,6 +52,8 @@ fn local() -> String {
     }
 }
 
+/// The function responsible for the conclusion of the name of the
+/// repository.
 fn git() -> String {
     let cur_dir = env::current_dir().unwrap().display().to_string();
     let mut cur_split: Vec<String> = cur_dir.split_inclusive('/').map(String::from).collect();

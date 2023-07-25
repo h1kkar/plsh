@@ -4,8 +4,6 @@
 //! with `bash`.
 //!
 //! At the moment, it only works in Linux systems.
-//!
-//! #Usage
 //! 
 //! This crate is [on crates.io](https://crates.io/crates/shime).
 //! 
@@ -20,6 +18,7 @@
 /// This is the main module that includes the entire functionality of the shell.
 pub mod shime;
 
+///This module is responsible for its own `shime` commands.
 pub mod cmd;
 
 #[doc(hidden)]

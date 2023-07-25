@@ -7,18 +7,6 @@ use dirs;
 use ansi_colors::*;
 
 /// A function returning the home directory.
-///
-/// # Usage
-/// 
-/// ```no_run
-/// println!(home_dir());
-/// ```
-/// Here's what will turn out in the end, instead of `user`, there should be the
-/// name of your current user.
-///
-/// ```no_run
-/// "/home/user"
-/// ```
 pub fn home_dir() -> String {
     match dirs::home_dir() {
         Some(path) => {
@@ -31,17 +19,6 @@ pub fn home_dir() -> String {
 }
 
 /// a function responsible for the transition to a particular directory.
-///
-/// Equal to the `cd` function in Unix- systems.
-///
-/// # Usage
-///
-/// ```no_run
-/// // Current directories is "/home/user/"
-/// let path: String = String::from("project/git/shime");
-/// cd(&path);
-/// // Current directories is "/home/user/project/git/shime"
-/// ```
 pub fn go(path: &String) {
     let path_split: Vec<String> = path.split_inclusive('/').map(String::from).collect();
 
@@ -87,7 +64,6 @@ pub fn go(path: &String) {
         let cur_dir: String = env::current_dir().unwrap().display().to_string();
         let home = home_dir() + "/";
         let dir: Vec<String> = cur_dir.split(&home).map(String::from).collect();
-        //let s = String::from("~/") + &dir[1][..];
         if cond {
             if cur_dir == home_dir() {
                 let mut m = ColouredStr::new("moved");
@@ -115,15 +91,7 @@ pub fn go(path: &String) {
     }
 }
 
-/// The function that transition to the directory is back (accompanies the [cd function][cd]).
-///
-/// # Usage
-///
-/// ```no_run
-/// // Current directories is "shime/src"
-/// let _ = back();
-/// // Current directories is "shime"
-/// ```
+/// The function that transition to the directory is back (accompanies the `cd` ).
 pub fn back() -> Result<bool, io::Error> {
     let cur_dir = env::current_dir().unwrap().display().to_string();
 
@@ -137,16 +105,7 @@ pub fn back() -> Result<bool, io::Error> {
     };
 }
 
-/// The function that transition to a specific directory is lower in the directory tree (accompanies the [cd function][cd]).
-///
-/// # Usage
-///
-/// ```no_run
-/// // Current directories is "shime"
-/// let path: String = String::from("src");
-/// let _ = next(&vec![path]);
-/// // Current directories is "shime/src"
-/// ```
+/// The function that transition to a specific directory is lower in the directory tree (accompanies the `cd`).
 pub fn next(path: &Vec<String>) -> Result<bool, io::Error> {
     let cur_dir = env::current_dir().unwrap().display().to_string();
 
@@ -159,14 +118,6 @@ pub fn next(path: &Vec<String>) -> Result<bool, io::Error> {
 }
 
 /// The function that helps in working with the absolute paths
-///
-/// # Usage
-///
-/// ```no_run
-/// let path: Vec<String> = !vec[String::from("/home/"), String::from("user/")];
-/// let _ = absolute_path(&path);
-/// // Current directories is "/home/user"
-/// ```
 pub fn absolute_path(path: &Vec<String>) -> Result<Option<String>, io::Error> {
     let dir = path.concat();
     let _ = match env::set_current_dir(&dir) {
@@ -176,13 +127,6 @@ pub fn absolute_path(path: &Vec<String>) -> Result<Option<String>, io::Error> {
 }
 
 /// The function that transition to a home directory
-///
-/// # Usage
-///
-/// ```no_run
-/// let _ = go_home()
-/// // Current directories is "/home/user"
-/// ```
 pub fn go_home() -> Result<Option<String>, io::Error> {
     let _ = match env::set_current_dir(home_dir()) {
         Ok(()) => return Ok(None),

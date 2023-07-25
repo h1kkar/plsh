@@ -5,24 +5,6 @@ use std::io::*;
 use crate::shime::prompt::sudo::root;
 
 /// A function that simply prints prompt, nothing special.
-///
-/// # Example
-///
-/// ```no_run
-/// exec('❯');
-/// println!("hi\n");
-///
-/// exec('❯');
-/// println!("hi")
-/// ```
-///
-/// ```no_run
-/// ~
-/// ❯ hi
-///
-/// ~
-/// ❯ hi
-/// ```
 pub fn exec(c: char) {
     print!("\n");
 
@@ -32,6 +14,7 @@ pub fn exec(c: char) {
     
 }
 
+/// The function responsible for the output of the useful line of prompt.
 fn line(/*ch: Vec<String>*/) {
     root();
     print!("{0}\n", dir::main())

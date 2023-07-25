@@ -13,6 +13,7 @@ use crate::shime::{
 
 use ansi_colors::*;
 
+/// The function responsible for the transition between the directors and the withdrawal of relevant information.
 pub fn cd(cmds: Command) {
     if cmds.args.len() == 1 {
         go(&cmds.args[0])
@@ -32,6 +33,7 @@ pub fn cd(cmds: Command) {
     }
 }
 
+#[doc(hidden)]
 pub fn clr() {
     // bl  r  g  y  b  m  c  w
     // bbl br bg by bb bm bc bw
@@ -72,11 +74,13 @@ pub fn clr() {
     println!("{} {} {} {} {} {} {} {}", bbl, br, bg, by, bb, bm, bc, bw);
 }
 
+/// The function responsible for the exit from `shime` and the withdrawal of relevant information.
 pub fn exit() {
     let bye = say::bye();
     println!("{0}", bye);
 }
 
+/// The function responsible for starting commands.
 pub fn exec(cmds: Command) {
     match Cmds::new(cmds.keyword)
         .args(cmds.args)

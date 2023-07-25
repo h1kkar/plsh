@@ -1,6 +1,7 @@
 use rand::Rng;
 use ansi_colors::*;
 
+/// Googbye
 pub fn bye() -> String {
     match n() {
         0 => {
@@ -191,6 +192,7 @@ pub fn bye() -> String {
     }
 }
 
+/// Hello
 pub fn hi() -> String {
     match n() {
         0 => {
