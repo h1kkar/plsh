@@ -20,6 +20,8 @@
 /// This is the main module that includes the entire functionality of the shell.
 pub mod shime;
 
+pub mod cmd;
+
 #[doc(hidden)]
 pub use shime::start;
 
