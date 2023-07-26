@@ -1,4 +1,5 @@
 /// structure that contains the command keyword and the arguments.
+#[derive(Debug)]
 pub struct Command {
     /// A string containing a keyword.
     pub keyword: String,
@@ -11,7 +12,7 @@ pub struct Command {
 impl Command {
     /// The main function that simply compares the command with `""` and
     /// performs the necessary actions.
-    pub fn start(c: String) -> Command {
+    pub fn start(c: &String) -> Command {
         match &c[..] {
             "" => {
                 Command {

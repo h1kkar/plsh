@@ -2,7 +2,10 @@
 /// 
 /// This function simply processes prompt, input, withdrawal and manages to which command to launch.
 pub fn start() {
-    use crate::cmd::*;
+    use crate::{
+        cmd::*,
+        exec,
+    };
     use read::*;
     use tokenize::*;
     use func::say::hi;
@@ -12,7 +15,7 @@ pub fn start() {
     loop {
         prompt::exec('❯');
         let cmd = read_cmd();
-        let cmds = Command::start(cmd);
+        let cmds = Command::start(&cmd);
 
         match &cmds.keyword[..] {
             "cd" => {
@@ -27,7 +30,7 @@ pub fn start() {
             },
             "" => print!(""),
             _ => {
-                exec(cmds)
+                exec::start(cmd)
             },
         }
     }

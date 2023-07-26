@@ -18,8 +18,11 @@
 /// This is the main module that includes the entire functionality of the shell.
 pub mod shime;
 
-///This module is responsible for its own `shime` commands.
+/// This module is responsible for its own `shime` commands.
 pub mod cmd;
+
+/// This module launches programs from `PATH`
+pub mod exec;
 
 #[doc(hidden)]
 pub use shime::start;
