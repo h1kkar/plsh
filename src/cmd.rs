@@ -1,6 +1,7 @@
+use std::process::Command as Cmds;
+
 use crate::shime::{
     tokenize::*,
-    //ttoken::*,
     func::{
         dir::{
             self,
@@ -14,28 +15,24 @@ use ansi_colors::*;
 
 /// The function responsible for the transition between the directors and the withdrawal of relevant information.
 pub fn cd(cmds: Command) {
-    //if cmds.len() == 1 {
-        if cmds.args.len() == 1 {
-            go(&cmds.args[0])
-        } else if cmds.args.len() == 0 {
-            match dir::go_home() {
-                Ok(_) => {
-                    let mut m = ColouredStr::new("moved");
-                    m.cyan();
-                    let mut h = ColouredStr::new("home");
-                    h.magenta();
-                    println!("you {0} to the {1} dir", m, h)
-                    },
-                Err(error) => println!("{0}", error),
-            }
-        } else {
-            println!("many args")
-        }
-    /*} else {
-        println!("error")
-    }*/
+    let args: Vec<String> = cmds.args.split_whitespace().map(String::from).collect();
 
-    
+    if args.len() == 1 {
+        go(&cmds.args)
+    } else if args.len() == 0 {
+        match dir::go_home() {
+            Ok(_) => {
+                let mut m = ColouredStr::new("moved");
+                m.cyan();
+                let mut h = ColouredStr::new("home");
+                h.magenta();
+                println!("you {0} to the {1} dir", m, h)
+                },
+            Err(error) => println!("{0}", error),
+        }
+    } else {
+        println!("many args")
+    }
 }
 
 #[doc(hidden)]
@@ -83,4 +80,18 @@ pub fn clr() {
 pub fn exit() {
     let bye = say::bye();
     println!("{0}", bye);
+}
+
+/// The function responsible for starting commands.
+pub fn exec(cmds: &String) {
+    match Cmds::new("sh")
+        .arg("-c")
+        .arg(cmds)
+        .current_dir(std::env::current_dir().unwrap())
+        .spawn() {
+            Ok(mut child) => {
+                child.wait().unwrap();
+            },
+            Err(error) => println!("{error}")
+    }
 }
