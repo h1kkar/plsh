@@ -2,10 +2,15 @@
 /// 
 /// This function simply processes prompt, input, withdrawal and manages to which command to launch.
 pub fn start() {
-    use crate::cmd::*;
+    use crate::{
+        cmd::*,
+        exec,
+    };
     use read::*;
     use tokenize::*;
     use func::say::hi;
+
+    use ansi_colors::*;
 
     println!("{}", hi());
 
@@ -25,9 +30,32 @@ pub fn start() {
                 exit();
                 break;
             },
+            "config" | "conf" | "c" => {
+                let mut path = func::dir::home_dir();
+                path.push_str("/.config");
+                cd(Command { keyword: "cd".to_string(), args: path })
+            },
+            "home" | "h" => {
+                match func::dir::go_home() {
+                    Ok(_) => {
+                        let mut m = ColouredStr::new("moved");
+                        m.cyan();
+                        let mut h = ColouredStr::new("home");
+                        h.magenta();
+                        println!("you {0} to the {1} dir", m, h)
+                        },
+                    Err(error) => {
+                        let err = error.to_string();
+                        let mut err = ColouredStr::new(&err);
+                        err.back_red();
+                        err.bold();
+                        println!("{0}", err)
+                    },
+                }
+            }
             "" => print!(""),
             _ => {
-                exec(&cmd)
+                exec::start(&cmd)
             },
         }
     }

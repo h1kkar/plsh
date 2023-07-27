@@ -21,6 +21,9 @@ pub mod shime;
 ///This module is responsible for its own `shime` commands.
 pub mod cmd;
 
+/// This module run programs
+pub mod exec;
+
 #[doc(hidden)]
 pub use shime::start;
 

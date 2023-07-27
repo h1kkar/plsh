@@ -1,5 +1,3 @@
-use std::process::Command as Cmds;
-
 use crate::shime::{
     tokenize::*,
     func::{
@@ -89,33 +87,4 @@ pub fn clr() {
 pub fn exit() {
     let bye = say::bye();
     println!("{0}", bye);
-}
-
-/// The function responsible for starting commands.
-pub fn exec(cmds: &String) {
-    match Cmds::new("sh")
-        .arg("-c")
-        .arg(cmds)
-        .current_dir(std::env::current_dir().unwrap())
-        .spawn() {
-            Ok(mut child) => {
-                match child.wait() {
-                    Ok(_) => println!(""),
-                    Err(error) => {
-                        let err = error.to_string();
-                        let mut err = ColouredStr::new(&err);
-                        err.back_red();
-                        err.bold();
-                        println!("{err}")
-                    }
-                }
-            },
-            Err(error) => {
-                let err = error.to_string();
-                let mut err = ColouredStr::new(&err);
-                err.back_red();
-                err.bold();
-                println!("{err}")
-            }
-    }
 }

@@ -1,7 +1,5 @@
 use std::io::*;
 
-use ansi_colors::*;
-
 use dye::clr;
 use crate::shime::prompt::sudo::root;
 
@@ -11,16 +9,7 @@ pub fn exec(c: char) {
 
     line();
     print!("{0} ", clr(c));
-    match stdout().flush() {
-        Ok(_) => println!(""),
-        Err(error) => {
-            let err = error.to_string();
-            let mut err = ColouredStr::new(&err);
-            err.back_red();
-            err.bold();
-            println!("{err}")
-        }
-    };    
+    stdout().flush().unwrap();    
     
 }
 
