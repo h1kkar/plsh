@@ -19,8 +19,12 @@ pub fn var() -> String {
 
     match env::var(key) {
         Ok(usr) => return usr,
-        Err(err) => {
-            println!("{0}", err);
+        Err(error) => {
+            let err = error.to_string();
+            let mut err = ColouredStr::new(&err);
+            err.back_red();
+            err.bold();
+            println!("{err}");
             return String::from("");
         },
     }

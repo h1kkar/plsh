@@ -28,10 +28,19 @@ pub fn cd(cmds: Command) {
                 h.magenta();
                 println!("you {0} to the {1} dir", m, h)
                 },
-            Err(error) => println!("{0}", error),
+            Err(error) => {
+                let err = error.to_string();
+                let mut err = ColouredStr::new(&err);
+                err.back_red();
+                err.bold();
+                println!("{0}", err)
+            },
         }
     } else {
-        println!("many args")
+        let mut err = ColouredStr::new("Too many args for cd command");
+        err.back_red();
+        err.bold();
+        println!("{err}")
     }
 }
 
@@ -90,8 +99,23 @@ pub fn exec(cmds: &String) {
         .current_dir(std::env::current_dir().unwrap())
         .spawn() {
             Ok(mut child) => {
-                child.wait().unwrap();
+                match child.wait() {
+                    Ok(_) => println!(""),
+                    Err(error) => {
+                        let err = error.to_string();
+                        let mut err = ColouredStr::new(&err);
+                        err.back_red();
+                        err.bold();
+                        println!("{err}")
+                    }
+                }
             },
-            Err(error) => println!("{error}")
+            Err(error) => {
+                let err = error.to_string();
+                let mut err = ColouredStr::new(&err);
+                err.back_red();
+                err.bold();
+                println!("{err}")
+            }
     }
 }
