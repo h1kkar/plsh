@@ -27,7 +27,7 @@ pub mod get {
         if super::config().noncommited {
             return c.to_string()
         } else {
-            String::from("")
+            String::from(" ")
         }
     }
     
