@@ -4,12 +4,15 @@ use ansi_colors::*;
 
 /// A function responsible for the withdrawal of information about whether
 /// the user has come under `sudo`.
-pub fn root() {
+pub fn root() -> String {
     if var() == "root" {
         let mut r = ColouredStr::new("root");
         r.red();
         r.bold();
-        print!("{0} in ", r)
+        let s = r.to_string() + " in ";
+        return s.to_string();
+    } else {
+        "".to_string()
     }
 }
 
