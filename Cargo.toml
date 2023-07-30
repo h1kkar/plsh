@@ -9,7 +9,7 @@ license = "AGPL-3.0-only"
 keywords = ["shell", "cd", "prompt"]
 categories = ["command-line-utilities"]
 exclude = ["facts.md", "private_todo.md", ".gitignore", "todo.md", "todo"]
-version = "0.0.2"
+version = "0.0.3"
 edition = "2021"
 
 [dependencies]
