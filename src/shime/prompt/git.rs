@@ -16,7 +16,7 @@ pub mod get {
         let mut b = ColouredStr::new(&branch);
         b.magenta();
         b.bold();
-        let s = String::from(" on ") + &b.to_string();
+        let s = String::from(" on ") + &b.to_string() + "";
         return s
     }
     
