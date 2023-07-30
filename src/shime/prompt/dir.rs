@@ -1,24 +1,14 @@
-use std::{
-    env,
-    process::Command,
-    str::from_utf8,
-};
+use std::env;
 
 use super::super::func::dir::home_dir;
+use super::git::get::status;
+
 use ansi_colors::*;
 
 /// The function responsible for whether the name of the repository
 /// or directory will be displayed.
 pub fn main() -> String {
-    let g = match Command::new("git")
-        .arg("branch")
-        .output() {
-            Ok(p) => {
-                from_utf8(p.stdout.as_slice()).unwrap().to_string()},
-            Err(_) => "".to_string()
-        };
-
-    if g != "".to_string() {
+    if status() {
         git()
     } else {
         local()
