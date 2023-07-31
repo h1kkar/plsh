@@ -1,16 +1,10 @@
-/// structure that contains the command keyword and the arguments.
 #[derive(Debug)]
 pub struct Command {
-    /// A string containing a keyword.
     pub keyword: String,
-    /// Vector containing all the command arguments.
     pub args: String,
 }
 
-/// Implementation, which takes away the input and gives the structure
-/// of `Command`.
 impl Command {
-    /// The function split commands to keyword and args
     pub fn start(c: &String) -> Command {
         match &c[..] {
             "" => {

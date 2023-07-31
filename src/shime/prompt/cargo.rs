@@ -42,5 +42,4 @@ pub fn rust_ver() -> String {
     ver.bold();
     let version = "via 🦀 ".to_string() + &ver.to_string()+ " ";
     version
-    //print!("{v}")
 }

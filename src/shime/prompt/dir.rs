@@ -5,8 +5,6 @@ use super::git::get::status;
 
 use ansi_colors::*;
 
-/// The function responsible for whether the name of the repository
-/// or directory will be displayed.
 pub fn main() -> String {
     if status() {
         git()
@@ -15,7 +13,6 @@ pub fn main() -> String {
     }
 }
 
-/// a function responsible for the type of directory output.
 fn local() -> String {
     let cur_dir = env::current_dir().unwrap().display().to_string();
     let home = home_dir() + "/";
@@ -42,8 +39,6 @@ fn local() -> String {
     }
 }
 
-/// The function responsible for the conclusion of the name of the
-/// repository.
 fn git() -> String {
     let cur_dir = env::current_dir().unwrap().display().to_string();
     let mut cur_split: Vec<String> = cur_dir.split_inclusive('/').map(String::from).collect();

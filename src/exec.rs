@@ -2,7 +2,6 @@ use std::process::Command;
 
 use ansi_colors::*;
 
-/// The function responsible for starting commands.
 pub fn start(cmds: &String) {
     match Command::new("sh")
         .arg("-c")

@@ -6,7 +6,6 @@ use std::{
 use dirs;
 use ansi_colors::*;
 
-/// A function returning the home directory.
 pub fn home_dir() -> String {
     match dirs::home_dir() {
         Some(path) => {
@@ -18,7 +17,6 @@ pub fn home_dir() -> String {
     }
 }
 
-/// a function responsible for the transition to a particular directory.
 pub fn go(path: &String) {
     let path_split: Vec<String> = path.split_inclusive('/').map(String::from).collect();
 
@@ -91,7 +89,6 @@ pub fn go(path: &String) {
     }
 }
 
-/// The function that transition to the directory is back (accompanies the `cd` ).
 pub fn back() -> Result<bool, io::Error> {
     let cur_dir = env::current_dir().unwrap().display().to_string();
 
@@ -105,7 +102,6 @@ pub fn back() -> Result<bool, io::Error> {
     };
 }
 
-/// The function that transition to a specific directory is lower in the directory tree (accompanies the `cd`).
 pub fn next(path: &Vec<String>) -> Result<bool, io::Error> {
     let cur_dir = env::current_dir().unwrap().display().to_string();
 
@@ -117,7 +113,6 @@ pub fn next(path: &Vec<String>) -> Result<bool, io::Error> {
     };
 }
 
-/// The function that helps in working with the absolute paths
 pub fn absolute_path(path: &Vec<String>) -> Result<Option<String>, io::Error> {
     let dir = path.concat();
     let _ = match env::set_current_dir(&dir) {
@@ -126,7 +121,6 @@ pub fn absolute_path(path: &Vec<String>) -> Result<Option<String>, io::Error> {
     };
 }
 
-/// The function that transition to a home directory
 pub fn go_home() -> Result<Option<String>, io::Error> {
     let _ = match env::set_current_dir(home_dir()) {
         Ok(()) => return Ok(None),

@@ -11,7 +11,6 @@ use crate::shime::{
 
 use ansi_colors::*;
 
-/// The function responsible for the transition between the directors and the withdrawal of relevant information.
 pub fn cd(cmds: Command) {
     let args: Vec<String> = cmds.args.split_whitespace().map(String::from).collect();
 
@@ -83,7 +82,6 @@ pub fn clr() {
     println!("{} {} {} {} {} {} {} {}", bbl, br, bg, by, bb, bm, bc, bw);
 }
 
-/// The function responsible for the exit from `shime` and the withdrawal of relevant information.
 pub fn exit() {
     let bye = say::bye();
     println!("{0}", bye);
