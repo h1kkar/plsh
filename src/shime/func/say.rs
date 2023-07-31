@@ -1,7 +1,6 @@
 use rand::Rng;
 use ansi_colors::*;
 
-/// Googbye
 pub fn bye() -> String {
     match n() {
         0 => {
@@ -192,7 +191,6 @@ pub fn bye() -> String {
     }
 }
 
-/// Hello
 pub fn hi() -> String {
     match n() {
         0 => {
@@ -383,7 +381,6 @@ pub fn hi() -> String {
     }
 }
 
-#[doc(hidden)]
 fn n() -> i8 {
     rand::thread_rng().gen_range(0..36)
 }

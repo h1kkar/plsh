@@ -1,17 +1,39 @@
-use std::io::*;
+use dirs;
+use rustyline::error::ReadlineError;
+use rustyline::DefaultEditor;
 
-use dye::clr;
-
-/// A function that simply prints prompt, nothing special.
-pub fn exec(c: char) {
-    print!("\n");
-
-    line();
-    print!("{0} ", clr(c));
-    stdout().flush().unwrap();
+pub fn exec(c: &str) -> String {
+    let c = dye::clr(c);
+    
+    let mut rl = DefaultEditor::new().unwrap();
+    
+    if rl.load_history(&get::history()).is_err() {
+        println!("history file not found")
+    }
+    
+    let mut s = String::new();
+    
+        print!("\n");
+        line();
+        
+        let readline = rl.readline(&c);
+        
+        match readline {
+            Ok(line) => {
+                rl.add_history_entry(line.as_str()).unwrap();
+                s.push_str(&line);
+            },
+            Err(ReadlineError::Interrupted) => {},
+            Err(ReadlineError::Eof) => {},
+            Err(err) => {
+                println!("Error: {:?}", err);
+            }
+        }
+    
+    rl.save_history(&get::history()).unwrap();
+    return s;
 }
 
-/// The function responsible for the output of the useful line of prompt.
 fn line() {
     get::root();
     get::dir();
@@ -54,6 +76,17 @@ pub mod get {
     pub fn rustver() {
         print!("{}", super::cargo::rust_ver())
     }
+    
+    pub fn history() -> String {
+        match dirs::config_dir() {
+        Some(path) => {
+            let mut path = path.display().to_string();
+            path.push_str("/shime/shime_history");
+            path
+        },
+        None => "".to_string()
+    }
+    }
 }
 
 pub mod dye;
@@ -61,4 +94,3 @@ pub mod dir;
 pub mod git;
 pub mod cargo;
 pub mod sudo;
-pub mod time;
