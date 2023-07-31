@@ -36,7 +36,13 @@ pub mod get {
         let mut c = ColouredStr::new(&commit);
         c.light_blue();
         c.bold();
-        let s = c.to_string() + " ";
+        let mut s = String::new();
+        if commit == "".to_string() {
+            s.push_str(&c.to_string());
+        } else {
+            let f = c.to_string() + " ";
+            s.push_str(&f);
+        }
         return s
     }
     
@@ -81,6 +87,9 @@ pub mod alt_conf {
             .arg(".git/HEAD")
             .output()
             .expect(&err.to_string());
-        from_utf8(head.stdout.as_slice()).unwrap().to_string()
+        let branch = from_utf8(head.stdout.as_slice()).unwrap().trim().to_string();
+        let br: Vec<String> = branch.split('/').map(String::from).collect();
+        let b = &br[br.len()-1];
+        b.to_string()
     }
 }
