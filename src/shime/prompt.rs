@@ -40,9 +40,7 @@ fn line() {
     get::branch();
     get::delim();
     get::commit();
-    get::pkgver();
-    
-    get::rustver();
+    get::ver();
     print!("\n")
 }
 

@@ -7,26 +7,33 @@ use std::{
 use tsu;
 use ansi_colors::*;
 
-pub fn pkg_ver() -> String {
+pub fn ver() -> String {
     let file = match fs::read_to_string("Cargo.toml") {
         Ok(v) => v,
         Err(_) => "".to_string(),
     };
     
     if file != "".to_string() {
-        let cargo_toml = tsu::toml_from_str(file);
-        let package = cargo_toml.get("package").unwrap();
-        let version = package.get("version").unwrap();
-        let s: String = version.to_string();
-        let s: Vec<String> = s.split('"').map(String::from).collect();
-        let mut ver = ColouredStr::new(&s[1]);
-        ver.yellow();
-        ver.bold();
-        let v = "is 📦 ".to_string() + &ver.to_string() + " ";
-        return v
+        let pkg = pkg_ver(file);
+        let rust = rust_ver();
+        let s = pkg + &rust;
+        return s
     } else {
         return "".to_string()
     }
+}
+
+pub fn pkg_ver(file: String) -> String {
+    let cargo_toml = tsu::toml_from_str(file);
+    let package = cargo_toml.get("package").unwrap();
+    let version = package.get("version").unwrap();
+    let s: String = version.to_string();
+    let s: Vec<String> = s.split('"').map(String::from).collect();
+    let mut ver = ColouredStr::new(&s[1]);
+    ver.yellow();
+    ver.bold();
+    let v = "is 📦 ".to_string() + &ver.to_string() + " ";
+    return v
 }
 
 pub fn rust_ver() -> String {

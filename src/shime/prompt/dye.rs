@@ -46,7 +46,6 @@ pub fn clr(c: &str) -> String {
     }
 }
 
-#[doc(hidden)]
 fn n() -> i8 {
     rand::thread_rng().gen_range(0..7)
 }

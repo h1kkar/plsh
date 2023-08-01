@@ -20,12 +20,8 @@ pub fn delim() {
     print!("❘ ")
 }
 
-pub fn pkgver() {
-    print!("{0}",super::cargo::pkg_ver())
-}
-
-pub fn rustver() {
-    print!("{}", super::cargo::rust_ver())
+pub fn ver() {
+    print!("{0}",cargo::ver())
 }
 
 pub fn history() -> String {
