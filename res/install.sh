@@ -2,24 +2,28 @@
 
 function inst {
     sudo install target/release/shime /bin/shime
-    ./res/colr i 0
+    ./res/colr 2
 
-    ./res/colr i 1
+    ./res/colr 3
     sudo install target/release/shime /usr/bin/shime
 
     if ! (cat /etc/shells | grep shime > /dev/null); then
-        ./res/colr i 2
+        ./res/colr 4
         echo "/bin/shime" | sudo tee -a /etc/shells > /dev/null
         
-        ./res/colr i 3
+        ./res/colr 5
         echo "/usr/bin/shime" | sudo tee -a /etc/shells > /dev/null
     else
         printf ""
     fi
+    ./res/colr 6
+    mkdir $HOME/.config/shime > /dev/null
+    ./res/colr 7
+    touch $HOME/.config/shime/shime_history > /dev/null
 }
 
 function build {
-    ./res/colr b
+    ./res/colr 1
     cargo build --release
 }
 
