@@ -9,19 +9,25 @@
     <h5>You can receive additional information, as well as learn in advance about new functions in the <a href="https://shime_rust.t.me">telegram channel</a></h5>
 </div>
 
-
 ### install
+
 #### 1. clone this repo
+
 ```
 $ git clone https://github.com/h1kkar/shime.git
 ```
+
 #### 2. run in your shell:
+
 ```
 $ make build
 # make install
 ```
+
 ### uninstall
+
 #### run in your shell:
+
 ```
 # make uninstall
 ```
@@ -29,4 +35,5 @@ $ make build
 *if you do not possess `make`, then just repeat commands in `MakeFile`, but perform them with caution, I do not bear responsibility in the event of your error*
 
 ### todo
+
 if you want to see my plans for the future in relation to this project, as well as what I have already done and when, visit [notion](https://destiny-biology-77d.notion.site/TODO-787cf27fe21c40a589fea46c980a3141?pvs=4)

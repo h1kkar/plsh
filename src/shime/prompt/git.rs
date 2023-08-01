@@ -55,8 +55,12 @@ pub mod get {
                 },
                 Err(_) => None
             };
-        
-        if g != None {
+            
+        let g = match g {
+            Some(h) => h,
+            None => "".to_string()
+        };
+        if g != "".to_string() {
             return true
         } else {
             return false
